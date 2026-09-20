@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="An interactive deep-dive into waterborne epidemics — what they are, how they spread, and two landmark case studies that changed public health forever." />
+  <title>Waterborne Epidemics — Interactive Presentation by Ishwari Bhawalkar</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-left">
+      <a href="#home" class="nav-logo">Waterborne // IB</a>
+      <div class="nav-status">
+        <span class="nav-status-dot"></span>
+        Crisis Active
+      </div>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#simulator">Simulator</a></li>
+      <li><a href="#case-1">Case I</a></li>
+      <li><a href="#snowmap">Snow's Map</a></li>
+      <li><a href="#case-2">Case II</a></li>
+      <li><a href="#impact">Impact</a></li>
+      <li><a href="#quiz">Quiz</a></li>
+      <li><a href="#prevention" class="nav-cta">Prevention</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <canvas id="heroCanvas"></canvas>
+    <div class="hero-vignette"></div>
+
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span class="hero-eyebrow-dot"></span>
+        Interactive Presentation &mdash; Waterborne Epidemics
+      </div>
+      <h1 class="hero-title">
+        When <em>Water</em><br />
+        Becomes the<br />
+        <span class="danger">Weapon</span>
+      </h1>
+      <p class="hero-sub">
+        Every 21 seconds, a child dies from a waterborne disease.
+        This is a look at what they are, why they keep spreading,
+        and two moments in history where contaminated water
+        changed medicine and public health forever.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#simulator" class="btn-hero-primary">Try the simulator ↓</a>
+        <a href="#case-1" class="btn-hero-secondary">Read the cases</a>
+      </div>
+
+      <div class="hero-metrics">
+        <div class="h-metric">
+          <span class="val">2M<span class="unit">/yr</span></span>
+          <span class="lbl">Deaths globally</span>
+        </div>
+        <div class="h-metric">
+          <span class="val">785M</span>
+          <span class="lbl">Without clean water</span>
+        </div>
+        <div class="h-metric">
+          <span class="val">1854</span>
+          <span class="lbl">First mapped outbreak</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live pill — absolute top-right -->
+    <div class="live-pill">
+      <div class="live-label">
+        <span class="live-dot"></span>
+        Deaths today
+      </div>
+      <span class="live-num" id="liveCounter">0</span>
+      <span class="live-sub">WHO rate: ~2M/year</span>
+    </div>
+
+    <div class="scroll-hint">
+      <div class="scroll-line"></div>
+      <span class="scroll-text">Scroll</span>
+    </div>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section class="section overview" id="overview">
+    <div class="container">
+      <div class="overview-grid">
+        <div class="r">
+          <span class="eyebrow">What we're dealing with</span>
+          <h2 class="section-h">Contaminated water has been killing people for centuries</h2>
+          <div style="margin-top: 24px;">
+            <p style="color: var(--muted); font-size: 0.98rem; line-height: 1.9; margin-bottom: 16px;">
+              A waterborne disease is any illness caused by pathogens that travel through drinking water,
+              contaminated food, or direct contact with polluted water sources. The list of agents is long
+              and varied: bacteria, viruses, protozoa, and helminths all make the cut.
+            </p>
+            <p style="color: var(--muted); font-size: 0.98rem; line-height: 1.9; margin-bottom: 16px;">
+              What makes these outbreaks uniquely dangerous is the scale of simultaneous exposure. When
+              a single water source is compromised, everyone drinking from it is exposed at roughly the same
+              time. There is no gradual spread, no early warning from watching your neighbours get sick first.
+              An entire town wakes up ill.
+            </p>
+            <p style="color: var(--muted); font-size: 0.98rem; line-height: 1.9;">
+              The world has made real progress through chlorination, sewage treatment, and filtration
+              infrastructure. But aging water systems, extreme weather events, and institutional failures
+              mean the threat never fully disappears, even in the wealthiest countries on earth.
+            </p>
+          </div>
+          <div class="pathogen-pills" style="margin-top: 28px;">
+            <span class="pill b">Vibrio cholerae</span>
+            <span class="pill b">E. coli O157:H7</span>
+            <span class="pill b">Salmonella typhi</span>
+            <span class="pill b">Campylobacter jejuni</span>
+            <span class="pill v">Hepatitis A</span>
+            <span class="pill v">Norovirus</span>
+            <span class="pill v">Rotavirus</span>
+            <span class="pill p">Cryptosporidium</span>
+            <span class="pill p">Giardia lamblia</span>
+          </div>
+        </div>
+
+        <div>
+          <span class="eyebrow r d1" style="display:block; margin-bottom: 20px;">How it gets in</span>
+          <div class="trans-grid">
+            <div class="trans-card r d1">
+              <span class="trans-icon">🚰</span>
+              <h4>Failing pipe infrastructure</h4>
+              <p>Cracked or corroded pipes let soil and sewage infiltrate treated water.</p>
+            </div>
+            <div class="trans-card r d2">
+              <span class="trans-icon">🌊</span>
+              <h4>Surface runoff</h4>
+              <p>Rain washes pathogens from farms, streets, and waste sites into surface water.</p>
+            </div>
+            <div class="trans-card r d3">
+              <span class="trans-icon">🪣</span>
+              <h4>Groundwater seepage</h4>
+              <p>Poorly sealed wells and leaking septic systems contaminate aquifers.</p>
+            </div>
+            <div class="trans-card r d4">
+              <span class="trans-icon">🐄</span>
+              <h4>Agricultural waste</h4>
+              <p>Animal manure is a direct vehicle for E. coli, Campylobacter, and Cryptosporidium.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTAMINATION SIMULATOR -->
+  <section class="section simulator-section" id="simulator">
+    <div class="container">
+      <div class="center r">
+        <span class="eyebrow">Interactive</span>
+        <h2 class="section-h">Watch contamination spread</h2>
+        <p class="section-p">
+          Click anywhere on the grid to introduce a contamination point. Then watch how a single source
+          spreads through a shared water network. Adjust the spread rate and see how chlorination helps.
+          This is a simplified model, but the dynamics are real.
+        </p>
+      </div>
+
+      <div class="sim-wrap">
+        <div>
+          <div class="sim-canvas-wrap r" id="simWrap">
+            <canvas id="simCanvas" width="640" height="400"></canvas>
+            <div class="sim-overlay-text" id="simOverlay">Click the grid to introduce contamination</div>
+            <div class="map-tooltip" id="simTooltip"></div>
+          </div>
+        </div>
+
+        <div class="sim-stats r d2">
+          <div class="sim-stat">
+            <div class="label">Contaminated cells</div>
+            <div class="val infected" id="simInfected">0</div>
+          </div>
+          <div class="sim-stat">
+            <div class="label">Clean cells</div>
+            <div class="val clean" id="simClean">0</div>
+          </div>
+          <div class="sim-stat">
+            <div class="label">Simulation day</div>
+            <div class="val day" id="simDay">0</div>
+          </div>
+
+          <div class="sim-controls">
+            <button class="btn-sim danger-btn" id="btnContaminate">+ Add source</button>
+            <button class="btn-sim" id="btnChlorinate">Chlorinate</button>
+            <button class="btn-sim" id="btnReset">Reset</button>
+          </div>
+
+          <div class="sim-legend">
+            <h4 style="font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); margin-bottom: 4px;">Legend</h4>
+            <div class="legend-row"><div class="legend-dot" style="background:#00f5c0;"></div> Clean water</div>
+            <div class="legend-row"><div class="legend-dot" style="background:#ff3e6c;"></div> Contaminated</div>
+            <div class="legend-row"><div class="legend-dot" style="background:#ffb830;"></div> Treating (chlorination)</div>
+            <div class="legend-row"><div class="legend-dot" style="background:#2d4a60;"></div> Isolated / sealed</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDY 1 -->
+  <section class="section case" id="case-1">
+    <div class="container">
+      <div class="case-head r">
+        <span class="case-num">01</span>
+        <div>
+          <div class="case-tags">
+            <span class="tag">Cholera</span>
+            <span class="tag">London, England</span>
+            <span class="tag">August 1854</span>
+            <span class="tag">Vibrio cholerae</span>
+          </div>
+          <h2 class="section-h">The Broad Street Pump</h2>
+          <p class="section-p">
+            An outbreak that killed 616 people in 11 days, and the physician who traced it back
+            to a single water pump using nothing but a map, door-to-door interviews, and the
+            willingness to challenge what everyone thought they knew.
+          </p>
+        </div>
+      </div>
+
+      <div class="case-layout">
+        <div class="timeline r">
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">Pre-1854 — Background</div>
+            <h4>London's slow-motion sanitation crisis</h4>
+            <p>Victorian London was spectacularly overcrowded and spectacularly unsanitary.
+            Cesspits sat beneath houses, often a few feet below household water wells.
+            The dominant medical theory of the time was miasma: disease came from foul air.
+            Nobody was thinking about water.</p>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">31 August 1854 — Night</div>
+            <h4>The outbreak begins within hours</h4>
+            <p>Within hours of nightfall, residents of Soho's Golden Square began dying from
+            what appeared to be cholera. By morning, dozens were dead. Within three days,
+            127 people on or near Broad Street had died. Families were fleeing the neighbourhood
+            with whatever they could carry.</p>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">Early September 1854</div>
+            <h4>Dr John Snow starts mapping deaths</h4>
+            <p>John Snow, a local anaesthesiologist who had already been questioning miasma
+            theory, began visiting bereaved households and marking each death on a large
+            street map of the area. The pattern was striking and unmistakable. Deaths clustered
+            tightly around the water pump at 40 Broad Street. The further from the pump, the fewer deaths.</p>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">7 September 1854</div>
+            <h4>Snow makes his case to the Board of Guardians</h4>
+            <p>Snow presented his evidence to the Vestry of St James. The board was sceptical.
+            The miasma theory was not going down without a fight. But faced with the dot map
+            and Snow's careful interviews, they agreed to remove the handle from the Broad Street
+            pump. The outbreak had already begun to slow, partly because residents had fled,
+            but it stopped completely after the handle came off.</p>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">Late September 1854</div>
+            <h4>The source is confirmed</h4>
+            <p>Investigation of the well shaft revealed a cesspit just three feet from the pump
+            casing. The index case was an infant on Broad Street who had contracted cholera
+            elsewhere. The family had disposed of contaminated nappy water near the house,
+            and it had soaked through the soil into the well. One sick baby had infected
+            most of a neighbourhood.</p>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">Legacy — 1855 onward</div>
+            <h4>The birth of modern epidemiology</h4>
+            <p>Snow's work is considered the founding act of modern epidemiology. He had no
+            germ theory to work from. He had no microscope capable of showing him Vibrio cholerae.
+            He had careful observation, a map, and a willingness to follow the data wherever it led.
+            His 1855 paper On the Mode of Communication of Cholera remains one of the most
+            important documents in the history of medicine.</p>
+          </div>
+        </div>
+
+        <div class="data-panel r d2">
+          <div class="panel-head">Case 01 &mdash; Key Statistics</div>
+          <div class="panel-body">
+            <div class="data-item">
+              <span class="data-val r counter" data-target="616">0</span>
+              <span class="data-label">Deaths in the outbreak</span>
+            </div>
+            <div class="data-item">
+              <span class="data-val y">11</span>
+              <span class="data-label">Days for the peak to pass</span>
+            </div>
+            <div class="data-item">
+              <span class="data-val g">1</span>
+              <span class="data-label">Contaminated pump — 40 Broad Street</span>
+            </div>
+            <div class="data-item">
+              <span class="data-val b">1854</span>
+              <span class="data-label">The year epidemiology became a science</span>
+            </div>
+            <div class="insight-box">
+              <span class="insight-hl">The brewery test</span>
+              <p>Workers at a nearby Soho brewery were almost entirely unaffected.
+              They drank beer brewed on site, not water from the Broad Street pump.
+              That observation was Snow's clinching argument.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOHN SNOW'S MAP — INTERACTIVE -->
+  <section class="section map-section" id="snowmap">
+    <div class="container">
+      <div class="center r">
+        <span class="eyebrow">Interactive Reconstruction</span>
+        <h2 class="section-h">John Snow's dot map, rebuilt</h2>
+        <p class="section-p">
+          Click any death marker to see information about that cluster. Hover over the pump icon
+          to understand why Snow pointed to it as the source. Every dot represents real data
+          from Snow's original 1854 fieldwork.
+        </p>
+      </div>
+
+      <div class="map-wrap">
+        <div class="map-container r">
+          <canvas id="snowMap" width="720" height="500"></canvas>
+          <div class="map-tooltip" id="mapTooltip"></div>
+        </div>
+
+        <div class="r d2">
+          <div class="map-legend">
+            <h4>Map key</h4>
+            <div class="map-legend-item">
+              <div class="map-dot death"></div>
+              Death from cholera (stacked bar = multiple cases)
+            </div>
+            <div class="map-legend-item">
+              <div class="map-dot pump"></div>
+              Public water pump
+            </div>
+          </div>
+
+          <div class="death-counter-display" style="margin-top: 24px;">
+            <div class="label">Deaths plotted</div>
+            <div class="count" id="mapDeathCount">0 / 578</div>
+          </div>
+
+          <div class="map-detail-text" style="margin-top: 20px;">
+            <p>Snow mapped 578 deaths across the neighbourhood.
+            The tight cluster around the Broad Street pump was not visible in any individual
+            household report. It only appeared when you put all of them together on paper.</p>
+            <p>Snow also noted the Golden Square brewery and the Poland Street workhouse
+            as significant exceptions — locations close to the pump where death rates
+            were much lower. Both had their own water supplies.</p>
+            <p>This map is considered the first major use of geographic data analysis
+            in public health. Today we call it a choropleth or spatial epidemiology.
+            In 1854, it was just a doctor with a piece of paper and a pencil.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDY 2 -->
+  <section class="section case" id="case-2">
+    <div class="container">
+      <div class="case-head r">
+        <span class="case-num">02</span>
+        <div>
+          <div class="case-tags">
+            <span class="tag">E. coli O157:H7</span>
+            <span class="tag">Walkerton, Ontario</span>
+            <span class="tag">May 2000</span>
+            <span class="tag">Campylobacter jejuni</span>
+          </div>
+          <h2 class="section-h">Walkerton, Ontario</h2>
+          <p class="section-p">
+            In a small Canadian town, a preventable failure of oversight turned a rainstorm into a
+            public health catastrophe. Seven people died. More than 2,300 got sick. And the water
+            utility operators knew something was wrong before most people filled their first glass.
+          </p>
+        </div>
+      </div>
+
+      <div class="case-layout">
+        <div class="timeline r">
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">Background</div>
+            <h4>A small town with a troubled water system</h4>
+            <p>Walkerton was a town of about 5,000 people in Bruce County, Ontario.
+            Its water came from three wells managed by the Walkerton Public Utilities Commission.
+            The operators, brothers Stan and Frank Koebel, had no formal training in water treatment
+            and had routinely falsified water safety records for years. The regulatory system had no
+            mechanism to catch them.</p>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">Mid-May 2000</div>
+            <h4>Unusually heavy rainfall floods the area</h4>
+            <p>A period of intense rainfall hit Bruce County. Surface water runoff from nearby
+            cattle farms carrying E. coli O157:H7 and Campylobacter jejuni infiltrated Well 5,
+            one of the town's main water sources. The well had a shallow casing, no proper seal
+            against surface contamination, and inadequate chlorination. The contaminated water
+            entered the distribution system.</p>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">17 May 2000</div>
+            <h4>Test results come back. They are buried.</h4>
+            <p>A private laboratory returned results showing dangerously high E. coli counts in
+            the water. Stan Koebel received the results. He did not notify the local public health
+            unit. He did not issue a boil water advisory. He did not disclose the results to
+            anyone with authority to act on them. The contaminated water kept flowing into homes,
+            schools, and businesses.</p>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">19 May 2000</div>
+            <h4>People start getting sick across the town</h4>
+            <p>Residents across Walkerton began reporting severe stomach cramps, bloody diarrhoea,
+            and vomiting. A local family doctor notified the Bruce-Grey-Owen Sound Health Unit after
+            seeing multiple patients with the same symptoms. The first child was hospitalised with
+            haemolytic uraemic syndrome, a life-threatening kidney condition caused by E. coli toxins.
+            By the time a boil water advisory was finally issued, most of the town had already been
+            drinking the contaminated water for days.</p>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">21 May 2000</div>
+            <h4>Public health emergency declared</h4>
+            <p>The Ontario government declared a public health emergency. The Canadian Red Cross
+            brought in bottled water. Field hospitals were set up. Seven people died, including
+            children and elderly residents. More than 2,300 people, nearly half the entire town,
+            became ill. Dozens developed haemolytic uraemic syndrome. Some suffered permanent
+            kidney damage that stayed with them for life.</p>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">Aftermath — 2001–2003</div>
+            <h4>Criminal charges, a public inquiry, and national reform</h4>
+            <p>Stan and Frank Koebel were convicted of common nuisance for their negligence and
+            sentenced to prison. Justice Dennis O'Connor conducted a sweeping public inquiry whose
+            recommendations transformed water safety regulation across Canada. Ontario strengthened
+            its Safe Drinking Water Act. The Walkerton Clean Water Centre was established to train
+            water operators across the country. The case became a landmark study in the consequences
+            of allowing institutional negligence to persist unchallenged.</p>
+          </div>
+        </div>
+
+        <div class="data-panel r d2">
+          <div class="panel-head">Case 02 &mdash; Key Statistics</div>
+          <div class="panel-body">
+            <div class="data-item">
+              <span class="data-val r">7</span>
+              <span class="data-label">People killed</span>
+            </div>
+            <div class="data-item">
+              <span class="data-val y counter" data-target="2300">0</span>
+              <span class="data-label">People became ill</span>
+            </div>
+            <div class="data-item">
+              <span class="data-val g">5,000</span>
+              <span class="data-label">Population of Walkerton</span>
+            </div>
+            <div class="data-item">
+              <span class="data-val b">4</span>
+              <span class="data-label">Days between test results and public advisory</span>
+            </div>
+            <div class="insight-box">
+              <span class="insight-hl">The institutional failure</span>
+              <p>This was not just a microbial contamination event. The operators knew the
+              water was unsafe and said nothing. The regulatory system had no way to
+              catch them. The tragedy was as much about governance as it was about bacteria.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GLOBAL IMPACT -->
+  <section class="section impact" id="impact">
+    <div class="container">
+      <div class="center r">
+        <span class="eyebrow">The scale of the problem</span>
+        <h2 class="section-h">These two cases are not exceptions</h2>
+        <p class="section-p">
+          Waterborne diseases remain one of the leading causes of preventable death globally.
+          Low- and middle-income countries carry the heaviest burden, but as Walkerton showed,
+          wealthy nations are not immune when systems fail or oversight collapses.
+        </p>
+      </div>
+
+      <div class="counters-grid r">
+        <div class="cnt">
+          <span class="cnt-num counter" data-target="2000000">0</span>
+          <span class="cnt-label">People killed by waterborne disease each year</span>
+        </div>
+        <div class="cnt">
+          <span class="cnt-num counter" data-target="1400">0</span>
+          <span class="cnt-label">Children under five dying daily from diarrhoeal disease</span>
+        </div>
+        <div class="cnt">
+          <span class="cnt-num counter" data-target="785">0</span>
+          <span class="cnt-label">Million people without access to clean drinking water</span>
+        </div>
+        <div class="cnt">
+          <span class="cnt-num counter" data-target="2000000000">0</span>
+          <span class="cnt-label">People using water contaminated with faecal matter</span>
+        </div>
+      </div>
+
+      <div class="chart-box r">
+        <p class="chart-box-label">Estimated annual deaths by waterborne disease category — WHO 2023 estimates (thousands)</p>
+        <canvas id="impactChart" height="90"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="section quiz" id="quiz">
+    <div class="container">
+      <div class="center r">
+        <span class="eyebrow">Test yourself</span>
+        <h2 class="section-h">How much did you take in?</h2>
+        <p class="section-p">
+          Five questions drawn from what you just read. No trick questions.
+          Just the facts that actually matter.
+        </p>
+      </div>
+
+      <div class="quiz-wrap r">
+        <div class="quiz-box">
+          <div class="qprog-track">
+            <div class="qprog-fill" id="qProgress" style="width:0%"></div>
+          </div>
+
+          <div class="q-body" id="qBody">
+            <div class="q-meta">
+              <span class="q-idx" id="qIdx">Question 1 of 5</span>
+              <span class="q-score-badge" id="qBadge">Score: 0</span>
+            </div>
+            <p class="q-text" id="qText"></p>
+            <div class="q-opts" id="qOpts"></div>
+          </div>
+
+          <div class="q-foot" id="qFoot">
+            <p class="q-feedback" id="qFeedback"></p>
+            <button class="btn btn-blue" id="qNext" disabled>Next</button>
+          </div>
+
+          <div class="q-result" id="qResult">
+            <div class="result-ring">
+              <span class="result-score" id="qFinalScore">0/5</span>
+            </div>
+            <h3 id="qResultTitle"></h3>
+            <p id="qResultDesc"></p>
+            <button class="btn btn-blue" onclick="resetQuiz()">Try again</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREVENTION -->
+  <section class="section prevention" id="prevention">
+    <div class="container">
+      <div class="r">
+        <span class="eyebrow">What can be done</span>
+        <h2 class="section-h">Prevention is an engineering and governance problem</h2>
+        <p class="section-p">
+          The science for preventing waterborne outbreaks is largely settled. The hard part is
+          political will, funding, and the quality of public institutions managing water systems.
+        </p>
+      </div>
+
+      <div class="prev-grid">
+        <div class="prev-card r d1">
+          <div class="prev-icon">🧪</div>
+          <h3>Regular, independent water testing</h3>
+          <p>Mandatory testing with results reported to public health authorities, not just the
+          operator. Walkerton failed precisely because results went to the same people who
+          were motivated to hide them.</p>
+        </div>
+        <div class="prev-card r d2">
+          <div class="prev-icon">🏗️</div>
+          <h3>Infrastructure investment</h3>
+          <p>Aging pipes, poorly sealed wells, and under-maintained treatment plants sit at the
+          front line of risk. A water main breaks in the United States every two minutes, on average.
+          These are not hypothetical vulnerabilities.</p>
+        </div>
+        <div class="prev-card r d3">
+          <div class="prev-icon">🌱</div>
+          <h3>Agricultural runoff controls</h3>
+          <p>Buffer zones between livestock operations and water sources, better manure management,
+          and restrictions on land application near wells are well-established. They are also
+          politically difficult to enforce in farming-heavy regions.</p>
+        </div>
+        <div class="prev-card r d1">
+          <div class="prev-icon">📡</div>
+          <h3>Operator licensing and oversight</h3>
+          <p>Licensing requirements, continuing education, and third-party audits ensure that
+          people running water systems understand what they are doing. Stan and Frank Koebel
+          had neither training nor adequate supervision for years.</p>
+        </div>
+        <div class="prev-card r d2">
+          <div class="prev-icon">💧</div>
+          <h3>Chlorination and filtration</h3>
+          <p>Chlorination is one of the greatest public health achievements of the 20th century.
+          Combined with proper filtration, it eliminates most bacterial and viral threats.
+          The challenge is maintaining these systems consistently, especially in under-resourced areas.</p>
+        </div>
+        <div class="prev-card r d3">
+          <div class="prev-icon">📢</div>
+          <h3>Transparent, fast public communication</h3>
+          <p>When contamination is detected, the public needs to know immediately. Every hour of
+          delay means more people drinking compromised water. Boil water advisories issued
+          in hours, not days, save lives.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="footer-brand-name">Waterborne // Ishwari Bhawalkar</span>
+          <p>An interactive educational presentation on waterborne disease outbreaks, the history
+          of how we learned to identify them, and the public health infrastructure that prevents them.</p>
+          <p style="margin-top: 12px; font-size: 0.75rem; color: var(--dim); line-height: 1.7;">
+            Data sourced from WHO Global Burden of Disease reports, the O'Connor Commission Final
+            Report (2002), and John Snow's original 1855 paper
+            <em>On the Mode of Communication of Cholera</em>.
+          </p>
+        </div>
+        <div class="f-col">
+          <div class="f-col-head">Sections</div>
+          <ul>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#simulator">Spread Simulator</a></li>
+            <li><a href="#case-1">Case I — Broad Street</a></li>
+            <li><a href="#snowmap">Snow's Map</a></li>
+            <li><a href="#case-2">Case II — Walkerton</a></li>
+            <li><a href="#impact">Global Impact</a></li>
+            <li><a href="#quiz">Quiz</a></li>
+            <li><a href="#prevention">Prevention</a></li>
+          </ul>
+        </div>
+        <div class="f-col">
+          <div class="f-col-head">Sources</div>
+          <ul>
+            <li><a href="https://www.who.int/news-room/fact-sheets/detail/drinking-water" target="_blank" rel="noopener">WHO — Drinking Water</a></li>
+            <li><a href="https://johnsnowsociety.org/" target="_blank" rel="noopener">John Snow Society</a></li>
+            <li><a href="https://www.ontario.ca/page/walkerton-clean-water-centre" target="_blank" rel="noopener">Walkerton Clean Water Centre</a></li>
+            <li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3093393/" target="_blank" rel="noopener">Snow, 1855 — PubMed</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Ishwari Bhawalkar — Educational Use</p>
+        <p style="font-family: var(--mono); font-size: 0.65rem; color: var(--dim); letter-spacing: 0.08em;">WATERBORNE // EPIDEMIC RESEARCH</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
