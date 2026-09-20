@@ -178,7 +178,7 @@ body {
   position: relative;
   z-index: 2;
   max-width: 760px;
-  padding-top: 80px;
+  padding-top: 114px;
 }
 
 .hero-eyebrow {
@@ -317,7 +317,7 @@ body {
 /* Live counter */
 .live-pill {
   position: absolute;
-  top: 72px;
+  top: 106px;
   right: 40px;
   background: rgba(255, 45, 85, 0.08);
   border: 1px solid rgba(255, 45, 85, 0.25);
