@@ -35,6 +35,51 @@
     </button>
   </nav>
 
+  <!-- NEWS TICKER -->
+  <div class="ticker-wrap" id="tickerWrap">
+    <span class="ticker-who">WHO</span>
+    <div class="ticker-inner">
+      <div class="ticker-track">
+        <span>2,000,000 deaths from waterborne disease every year</span>
+        <span class="ticker-sep">&#9670;</span>
+        <span>1 child dies every 21 seconds from a waterborne illness</span>
+        <span class="ticker-sep">&#9670;</span>
+        <span>785 million people lack access to clean drinking water</span>
+        <span class="ticker-sep">&#9670;</span>
+        <span>2 billion people use water contaminated with faecal matter</span>
+        <span class="ticker-sep">&#9670;</span>
+        <span>Walkerton 2000 — a 4-day delay in issuing a boil water advisory killed 7 people</span>
+        <span class="ticker-sep">&#9670;</span>
+        <span>John Snow removed the Broad Street pump handle on 7 September 1854</span>
+        <span class="ticker-sep">&#9670;</span>
+        <span>Cryptosporidium is resistant to standard chlorine — needs UV or ozone treatment</span>
+        <span class="ticker-sep">&#9670;</span>
+        <span>Cholera kills up to 50% untreated — under 1% with oral rehydration therapy</span>
+        <span class="ticker-sep">&#9670;</span>
+        <span>829,000 deaths per year from unsafe drinking water sources — WHO estimate</span>
+        <span class="ticker-sep">&#9670;</span>
+        <span>2,000,000 deaths from waterborne disease every year</span>
+        <span class="ticker-sep">&#9670;</span>
+        <span>1 child dies every 21 seconds from a waterborne illness</span>
+        <span class="ticker-sep">&#9670;</span>
+        <span>785 million people lack access to clean drinking water</span>
+        <span class="ticker-sep">&#9670;</span>
+        <span>2 billion people use water contaminated with faecal matter</span>
+        <span class="ticker-sep">&#9670;</span>
+        <span>Walkerton 2000 — a 4-day delay in issuing a boil water advisory killed 7 people</span>
+        <span class="ticker-sep">&#9670;</span>
+        <span>John Snow removed the Broad Street pump handle on 7 September 1854</span>
+        <span class="ticker-sep">&#9670;</span>
+        <span>Cryptosporidium is resistant to standard chlorine — needs UV or ozone treatment</span>
+        <span class="ticker-sep">&#9670;</span>
+        <span>Cholera kills up to 50% untreated — under 1% with oral rehydration therapy</span>
+        <span class="ticker-sep">&#9670;</span>
+        <span>829,000 deaths per year from unsafe drinking water sources — WHO estimate</span>
+        <span class="ticker-sep">&#9670;</span>
+      </div>
+    </div>
+  </div>
+
   <!-- HERO -->
   <section class="hero" id="home">
     <canvas id="heroCanvas"></canvas>
@@ -58,7 +103,7 @@
       </p>
 
       <div class="hero-actions">
-        <a href="#simulator" class="btn-hero-primary">Try the simulator ↓</a>
+        <a href="#simulator" class="btn-hero-primary">Try the simulator &#8595;</a>
         <a href="#case-1" class="btn-hero-secondary">Read the cases</a>
       </div>
 
@@ -78,7 +123,7 @@
       </div>
     </div>
 
-    <!-- Live pill — absolute top-right -->
+    <!-- Live pill -->
     <div class="live-pill">
       <div class="live-label">
         <span class="live-dot"></span>
@@ -119,16 +164,113 @@
               mean the threat never fully disappears, even in the wealthiest countries on earth.
             </p>
           </div>
-          <div class="pathogen-pills" style="margin-top: 28px;">
-            <span class="pill b">Vibrio cholerae</span>
-            <span class="pill b">E. coli O157:H7</span>
-            <span class="pill b">Salmonella typhi</span>
-            <span class="pill b">Campylobacter jejuni</span>
-            <span class="pill v">Hepatitis A</span>
-            <span class="pill v">Norovirus</span>
-            <span class="pill v">Rotavirus</span>
-            <span class="pill p">Cryptosporidium</span>
-            <span class="pill p">Giardia lamblia</span>
+
+          <!-- PATHOGEN FLIP CARDS -->
+          <p style="font-family:var(--mono);font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--dim);margin-top:32px;margin-bottom:14px;">Key pathogens — hover each card</p>
+          <div class="pathogen-grid">
+
+            <div class="flip-card">
+              <div class="flip-inner">
+                <div class="flip-front">
+                  <span class="fc-category fc-b">Bacteria</span>
+                  <em class="fc-name">Vibrio cholerae</em>
+                  <span class="fc-disease">Cholera</span>
+                  <span class="fc-hint">hover to flip</span>
+                </div>
+                <div class="flip-back">
+                  <div class="fb-row"><span class="fb-lbl">Incubation</span><span class="fb-val">2 hrs – 5 days</span></div>
+                  <div class="fb-row"><span class="fb-lbl">Mortality</span><span class="fb-val">25–50% untreated</span></div>
+                  <div class="fb-row"><span class="fb-lbl">Chlorine</span><span class="fb-val fb-ok">Killed at standard doses</span></div>
+                  <div class="fb-row fb-row-last"><span class="fb-lbl">Known for</span><span class="fb-val">Broad Street Pump, 1854</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="flip-card">
+              <div class="flip-inner">
+                <div class="flip-front">
+                  <span class="fc-category fc-b">Bacteria</span>
+                  <em class="fc-name">E. coli O157:H7</em>
+                  <span class="fc-disease">Haemorrhagic colitis</span>
+                  <span class="fc-hint">hover to flip</span>
+                </div>
+                <div class="flip-back">
+                  <div class="fb-row"><span class="fb-lbl">Incubation</span><span class="fb-val">3 – 4 days</span></div>
+                  <div class="fb-row"><span class="fb-lbl">Mortality</span><span class="fb-val">5–10% (HUS patients)</span></div>
+                  <div class="fb-row"><span class="fb-lbl">Chlorine</span><span class="fb-val fb-ok">Killed at standard doses</span></div>
+                  <div class="fb-row fb-row-last"><span class="fb-lbl">Known for</span><span class="fb-val">Walkerton, Ontario 2000</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="flip-card">
+              <div class="flip-inner">
+                <div class="flip-front">
+                  <span class="fc-category fc-p">Protozoa</span>
+                  <em class="fc-name">Cryptosporidium</em>
+                  <span class="fc-disease">Cryptosporidiosis</span>
+                  <span class="fc-hint">hover to flip</span>
+                </div>
+                <div class="flip-back">
+                  <div class="fb-row"><span class="fb-lbl">Incubation</span><span class="fb-val">2 – 10 days</span></div>
+                  <div class="fb-row"><span class="fb-lbl">Mortality</span><span class="fb-val">&gt;20% immunocompromised</span></div>
+                  <div class="fb-row"><span class="fb-lbl">Chlorine</span><span class="fb-val fb-warn">HIGHLY RESISTANT — UV/ozone</span></div>
+                  <div class="fb-row fb-row-last"><span class="fb-lbl">Known for</span><span class="fb-val">Milwaukee 1993 — 403,000 ill</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="flip-card">
+              <div class="flip-inner">
+                <div class="flip-front">
+                  <span class="fc-category fc-b">Bacteria</span>
+                  <em class="fc-name">Salmonella typhi</em>
+                  <span class="fc-disease">Typhoid fever</span>
+                  <span class="fc-hint">hover to flip</span>
+                </div>
+                <div class="flip-back">
+                  <div class="fb-row"><span class="fb-lbl">Incubation</span><span class="fb-val">6 – 30 days</span></div>
+                  <div class="fb-row"><span class="fb-lbl">Mortality</span><span class="fb-val">10–30% untreated</span></div>
+                  <div class="fb-row"><span class="fb-lbl">Chlorine</span><span class="fb-val fb-ok">Killed at standard doses</span></div>
+                  <div class="fb-row fb-row-last"><span class="fb-lbl">Known for</span><span class="fb-val">"Typhoid Mary" carrier cases</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="flip-card">
+              <div class="flip-inner">
+                <div class="flip-front">
+                  <span class="fc-category fc-v">Virus</span>
+                  <em class="fc-name">Hepatitis A</em>
+                  <span class="fc-disease">Hepatitis A</span>
+                  <span class="fc-hint">hover to flip</span>
+                </div>
+                <div class="flip-back">
+                  <div class="fb-row"><span class="fb-lbl">Incubation</span><span class="fb-val">15 – 50 days</span></div>
+                  <div class="fb-row"><span class="fb-lbl">Mortality</span><span class="fb-val">&lt;0.5% (higher in 50+)</span></div>
+                  <div class="fb-row"><span class="fb-lbl">Chlorine</span><span class="fb-val fb-ok">Killed at high Ct values</span></div>
+                  <div class="fb-row fb-row-last"><span class="fb-lbl">Known for</span><span class="fb-val">Shellfish contamination clusters</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="flip-card">
+              <div class="flip-inner">
+                <div class="flip-front">
+                  <span class="fc-category fc-b">Bacteria</span>
+                  <em class="fc-name">Campylobacter jejuni</em>
+                  <span class="fc-disease">Campylobacteriosis</span>
+                  <span class="fc-hint">hover to flip</span>
+                </div>
+                <div class="flip-back">
+                  <div class="fb-row"><span class="fb-lbl">Incubation</span><span class="fb-val">2 – 5 days</span></div>
+                  <div class="fb-row"><span class="fb-lbl">Mortality</span><span class="fb-val">&lt;0.1% (healthy adults)</span></div>
+                  <div class="fb-row"><span class="fb-lbl">Chlorine</span><span class="fb-val fb-ok">Killed at standard doses</span></div>
+                  <div class="fb-row fb-row-last"><span class="fb-lbl">Known for</span><span class="fb-val">Co-contaminant in Walkerton</span></div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 
@@ -136,22 +278,22 @@
           <span class="eyebrow r d1" style="display:block; margin-bottom: 20px;">How it gets in</span>
           <div class="trans-grid">
             <div class="trans-card r d1">
-              <span class="trans-icon">🚰</span>
+              <span class="trans-icon">&#128704;</span>
               <h4>Failing pipe infrastructure</h4>
               <p>Cracked or corroded pipes let soil and sewage infiltrate treated water.</p>
             </div>
             <div class="trans-card r d2">
-              <span class="trans-icon">🌊</span>
+              <span class="trans-icon">&#127754;</span>
               <h4>Surface runoff</h4>
               <p>Rain washes pathogens from farms, streets, and waste sites into surface water.</p>
             </div>
             <div class="trans-card r d3">
-              <span class="trans-icon">🪣</span>
+              <span class="trans-icon">&#129315;</span>
               <h4>Groundwater seepage</h4>
               <p>Poorly sealed wells and leaking septic systems contaminate aquifers.</p>
             </div>
             <div class="trans-card r d4">
-              <span class="trans-icon">🐄</span>
+              <span class="trans-icon">&#128004;</span>
               <h4>Agricultural waste</h4>
               <p>Animal manure is a direct vehicle for E. coli, Campylobacter, and Cryptosporidium.</p>
             </div>
@@ -168,9 +310,9 @@
         <span class="eyebrow">Interactive</span>
         <h2 class="section-h">Watch contamination spread</h2>
         <p class="section-p">
-          Click anywhere on the grid to introduce a contamination point. Then watch how a single source
-          spreads through a shared water network. Adjust the spread rate and see how chlorination helps.
-          This is a simplified model, but the dynamics are real.
+          Click anywhere on the grid to introduce a contamination point. Adjust the spread rate
+          and tick speed below, then watch how a single source takes over a shared water network.
+          Try chlorinating at different stages to see how timing changes everything.
         </p>
       </div>
 
@@ -195,6 +337,26 @@
           <div class="sim-stat">
             <div class="label">Simulation day</div>
             <div class="val day" id="simDay">0</div>
+          </div>
+
+          <!-- SIMULATOR SLIDERS -->
+          <div class="sim-slider-group">
+            <div class="sim-slider-row">
+              <label class="sim-slider-label" for="sliderSpread">
+                Spread rate
+                <span class="sim-slider-val" id="spreadVal">18%</span>
+              </label>
+              <input type="range" id="sliderSpread" class="sim-range" min="5" max="50" step="1" value="18" />
+              <div class="sim-slider-hint">Low = slow spread &nbsp;&#183;&nbsp; High = explosive outbreak</div>
+            </div>
+            <div class="sim-slider-row">
+              <label class="sim-slider-label" for="sliderSpeed">
+                Tick speed
+                <span class="sim-slider-val" id="speedVal">220ms</span>
+              </label>
+              <input type="range" id="sliderSpeed" class="sim-range" min="80" max="600" step="20" value="220" />
+              <div class="sim-slider-hint">Fast = time-lapse &nbsp;&#183;&nbsp; Slow = step-by-step</div>
+            </div>
           </div>
 
           <div class="sim-controls">
@@ -340,9 +502,8 @@
         <span class="eyebrow">Interactive Reconstruction</span>
         <h2 class="section-h">John Snow's dot map, rebuilt</h2>
         <p class="section-p">
-          Click any death marker to see information about that cluster. Hover over the pump icon
-          to understand why Snow pointed to it as the source. Every dot represents real data
-          from Snow's original 1854 fieldwork.
+          Hover over death markers to see their distance from the pump. Every dot represents real data
+          from Snow's original 1854 fieldwork. The pump location is shown in amber.
         </p>
       </div>
 
@@ -357,7 +518,7 @@
             <h4>Map key</h4>
             <div class="map-legend-item">
               <div class="map-dot death"></div>
-              Death from cholera (stacked bar = multiple cases)
+              Death from cholera
             </div>
             <div class="map-legend-item">
               <div class="map-dot pump"></div>
@@ -378,11 +539,33 @@
             as significant exceptions — locations close to the pump where death rates
             were much lower. Both had their own water supplies.</p>
             <p>This map is considered the first major use of geographic data analysis
-            in public health. Today we call it a choropleth or spatial epidemiology.
+            in public health. Today we call it spatial epidemiology.
             In 1854, it was just a doctor with a piece of paper and a pencil.</p>
           </div>
         </div>
       </div>
+
+      <!-- EPIDEMIC CURVE -->
+      <div class="epi-curve-box r" style="margin-top:56px;">
+        <div class="epi-curve-head">
+          <span class="eyebrow" style="margin-bottom:6px;">Historical data — Snow 1855</span>
+          <h3 class="epi-curve-title">Daily deaths during the Broad Street outbreak</h3>
+          <p class="epi-curve-sub">
+            Each bar represents one day of recorded cholera deaths. The pump handle was removed on
+            7 September. Deaths were already declining as residents fled, but the removal stopped
+            all further community exposure from that source.
+          </p>
+        </div>
+        <div class="epi-curve-canvas-wrap">
+          <canvas id="epiCurveCanvas"></canvas>
+        </div>
+        <div class="epi-curve-legend">
+          <span class="epi-legend-item"><span class="epi-dot epi-dot-pre"></span>Pre-intervention</span>
+          <span class="epi-legend-item"><span class="epi-dot epi-dot-handle"></span>Handle removed (7 Sep)</span>
+          <span class="epi-legend-item"><span class="epi-dot epi-dot-post"></span>Post-intervention</span>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -503,6 +686,30 @@
               water was unsafe and said nothing. The regulatory system had no way to
               catch them. The tragedy was as much about governance as it was about bacteria.</p>
             </div>
+
+            <!-- WALKERTON WHAT-IF SLIDER -->
+            <div class="whatif-box">
+              <span class="insight-hl" style="margin-bottom:10px;display:block;">What if they had acted sooner?</span>
+              <p class="whatif-intro">Drag to explore how advisory delay changed the outcome</p>
+              <div class="whatif-slider-row">
+                <span class="whatif-day-label">0 d<br><span class="whatif-day-sub">immediate</span></span>
+                <input type="range" id="sliderDelay" class="sim-range whatif-range" min="0" max="4" step="1" value="4" />
+                <span class="whatif-day-label" style="text-align:right;">4 d<br><span class="whatif-day-sub">actual</span></span>
+              </div>
+              <div class="whatif-results">
+                <div class="whatif-stat">
+                  <span class="whatif-stat-lbl">People sick</span>
+                  <span class="whatif-stat-val" id="whatifSick">2,300</span>
+                </div>
+                <div class="whatif-divider"></div>
+                <div class="whatif-stat">
+                  <span class="whatif-stat-lbl">Deaths</span>
+                  <span class="whatif-stat-val" id="whatifDeaths">7</span>
+                </div>
+              </div>
+              <p class="whatif-note" id="whatifNote">This is what happened. A 4-day delay turned a detectable contamination event into a public health catastrophe.</p>
+            </div>
+
           </div>
         </div>
       </div>
@@ -560,7 +767,9 @@
         </p>
       </div>
 
-      <div class="quiz-wrap r">
+      <div class="quiz-wrap r" style="position:relative;">
+        <canvas id="confettiCanvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:20;border-radius:20px;"></canvas>
+
         <div class="quiz-box">
           <div class="qprog-track">
             <div class="qprog-fill" id="qProgress" style="width:0%"></div>
@@ -581,7 +790,11 @@
           </div>
 
           <div class="q-result" id="qResult">
-            <div class="result-ring">
+            <div class="result-ring-wrap">
+              <svg class="result-ring-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <circle class="ring-bg" cx="50" cy="50" r="42" />
+                <circle class="ring-fg" id="ringFg" cx="50" cy="50" r="42" />
+              </svg>
               <span class="result-score" id="qFinalScore">0/5</span>
             </div>
             <h3 id="qResultTitle"></h3>
@@ -607,42 +820,42 @@
 
       <div class="prev-grid">
         <div class="prev-card r d1">
-          <div class="prev-icon">🧪</div>
+          <div class="prev-icon">&#129514;</div>
           <h3>Regular, independent water testing</h3>
           <p>Mandatory testing with results reported to public health authorities, not just the
           operator. Walkerton failed precisely because results went to the same people who
           were motivated to hide them.</p>
         </div>
         <div class="prev-card r d2">
-          <div class="prev-icon">🏗️</div>
+          <div class="prev-icon">&#127959;&#65039;</div>
           <h3>Infrastructure investment</h3>
           <p>Aging pipes, poorly sealed wells, and under-maintained treatment plants sit at the
           front line of risk. A water main breaks in the United States every two minutes, on average.
           These are not hypothetical vulnerabilities.</p>
         </div>
         <div class="prev-card r d3">
-          <div class="prev-icon">🌱</div>
+          <div class="prev-icon">&#127807;</div>
           <h3>Agricultural runoff controls</h3>
           <p>Buffer zones between livestock operations and water sources, better manure management,
           and restrictions on land application near wells are well-established. They are also
           politically difficult to enforce in farming-heavy regions.</p>
         </div>
         <div class="prev-card r d1">
-          <div class="prev-icon">📡</div>
+          <div class="prev-icon">&#128225;</div>
           <h3>Operator licensing and oversight</h3>
           <p>Licensing requirements, continuing education, and third-party audits ensure that
           people running water systems understand what they are doing. Stan and Frank Koebel
           had neither training nor adequate supervision for years.</p>
         </div>
         <div class="prev-card r d2">
-          <div class="prev-icon">💧</div>
+          <div class="prev-icon">&#128167;</div>
           <h3>Chlorination and filtration</h3>
           <p>Chlorination is one of the greatest public health achievements of the 20th century.
           Combined with proper filtration, it eliminates most bacterial and viral threats.
           The challenge is maintaining these systems consistently, especially in under-resourced areas.</p>
         </div>
         <div class="prev-card r d3">
-          <div class="prev-icon">📢</div>
+          <div class="prev-icon">&#128226;</div>
           <h3>Transparent, fast public communication</h3>
           <p>When contamination is detected, the public needs to know immediately. Every hour of
           delay means more people drinking compromised water. Boil water advisories issued
@@ -690,7 +903,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© 2026 Ishwari Bhawalkar — Educational Use</p>
+        <p>&copy; 2026 Ishwari Bhawalkar &mdash; Educational Use</p>
         <p style="font-family: var(--mono); font-size: 0.65rem; color: var(--dim); letter-spacing: 0.08em;">WATERBORNE // EPIDEMIC RESEARCH</p>
       </div>
     </div>
