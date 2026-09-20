@@ -11,8 +11,7 @@
      - 5-question quiz with scoring
    ============================================================ */
 
-const API_BASE = 'https://waterborne-api.onrender.com';
-
+const API_BASE = const API_BASE = 'https://waterborne-epidemic.onrender.com';
 /* ============================================================
    NAVBAR
    ============================================================ */
