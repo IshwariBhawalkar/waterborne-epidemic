@@ -1216,8 +1216,9 @@ footer {
   transform: rotateY(180deg);
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  padding: 14px 16px;
+  justify-content: space-evenly;
+  padding: 10px 12px;
+  overflow: hidden;
 }
 
 .fc-category {
@@ -1265,8 +1266,8 @@ footer {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 8px;
-  padding-bottom: 6px;
+  gap: 6px;
+  padding-bottom: 4px;
   border-bottom: 1px solid rgba(255,255,255,0.04);
 }
 
@@ -1274,19 +1275,22 @@ footer {
 
 .fb-lbl {
   font-family: var(--mono);
-  font-size: 0.55rem;
-  letter-spacing: 0.08em;
+  font-size: 0.52rem;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--muted);
   flex-shrink: 0;
+  min-width: 56px;
 }
 
 .fb-val {
   font-family: var(--mono);
-  font-size: 0.6rem;
+  font-size: 0.56rem;
   color: var(--off-white);
   text-align: right;
-  line-height: 1.4;
+  line-height: 1.35;
+  word-break: break-word;
+  max-width: calc(100% - 64px);
 }
 
 .fb-ok   { color: var(--teal); }
