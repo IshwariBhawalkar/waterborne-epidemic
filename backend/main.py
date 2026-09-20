@@ -22,10 +22,11 @@ app = FastAPI(
 # after deployment.
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://waterborne-epidemic.pages.dev"],      # Cloudflare Pages preview
-        # Add your production URL here, e.g.:
-        # "https://waterborne.pages.dev",
-        "*",  # Remove this line in production and add your exact URL above
+    allow_origins=[
+        "http://localhost:3000",
+        "http://127.0.0.1:5500",
+        "https://waterborne-epidemic.pages.dev",
+        "https://*.pages.dev",
     ],
     allow_credentials=True,
     allow_methods=["*"],
